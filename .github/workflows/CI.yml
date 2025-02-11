@@ -22,14 +22,14 @@ jobs:
                 
             
             - name: install dependencies
-              run:
-                 python -m venv venv
-                 source ./venv/bin/activate
-                 pip install --upgrade pip
-                 pip install -r requirements.txt
+              run: |
+                python -m venv venv
+                source ./venv/bin/activate
+                pip install --upgrade pip
+                pip install -r requirements.txt
 
             - name: running tests
-              run:
+              run: |
                 source ./venv/bin/activate 
                 pytest
             
