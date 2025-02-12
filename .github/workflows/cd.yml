@@ -31,9 +31,9 @@ jobs:
           username: ${{ secrets.SERVER_USER }}  # e.g., "onyejiakamadu" 
           key: ${{ secrets.SSH_PRIVATE_KEY }}  # Private key matching the instance’s authorized_keys
           port: 22
-          password: -s "password"
+          password: -S "password"
           script: |
-            sudo -s cd ${{ secrets.PROJECT_PATH }}  
+            sudo -S cd ${{ secrets.PROJECT_PATH }}  
             git pull origin main
             touch test
             sudo systemctl restart fastapi-app.service
