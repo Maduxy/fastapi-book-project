@@ -33,7 +33,14 @@ jobs:
           port: 22
           # password: -S "password"
           script: |
-            sudo -S cd ${{ secrets.PROJECT_PATH }}  
-            git pull origin main
+            echo ${{ secrets.SUDO_PASSWORD }} | sudo -S cd ${{ secrets.PROJECT_PATH }}  
+            if [ -d .git ]; then
+              git pull origin main
+            else
+              echo "Error: Not a git repository."
+              exit 1
+            fi
+        
+            # git pull origin main
             touch test
             sudo systemctl restart fastapi-app.service
